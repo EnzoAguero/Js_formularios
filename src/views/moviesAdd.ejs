@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie add</title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+      </figure>
+    <h1 class="moviesAddTitulo"></h1>
+    <br>
+    <section id="formulario" >
+        <article >
+            <form action="/movies/create" id="form" method="POST">
+                <label for="title">Titulo </label>
+                <p><input type="text" name="title" id="title" ></p>
+                <span  id="error-title" class="text-danger small"></span>
+                <label for="rating">Calificación </label>
+                <p><input type="number" name="rating" id="calification"> </p>
+                <span  id="error-calification" class="text-danger small"></span>
+                <label for="awards">Premios </label>
+                <p><input type="number" name="awards" id="awards"></p>
+                <span  id="error-awards" class="text-danger small"></span>
+                <label for="release_date">Fecha de creación </label>
+                <p><input type="date" name="release_date" id="date"></p>
+                <span  id="error-date" class="text-danger small"></span>
+                <label for="length">Duración </label>
+                <p><input type="number" name="length" id="duration"></p>
+                <span  id="error-duration" class="text-danger small"></span>
+                <label for="genreID">Género </label>
+                <p>
+                    <select name="genre_id" id="select">
+                        <option value="" disabled selected>- Seleccione el género - </option>
+                        <% allGenres.forEach(genre => { %>
+                        <option value="<%= genre.id %>"><%= genre.name %></option>
+                        <% }); %>
+                    </select>
+                </p>
+                <span  id="error-select" class="text-danger small"></span>
+                <br>
+                <p> <button class="botonAgregar" type="submit">Agregar</button>
+
+                
+                <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+                <span id="error-empty" class="text-danger"></span>
+            </form>
+        </article>
+    </section>
+    <script src="/js/validationAdd.js"></script>
+</body>
+</html>
